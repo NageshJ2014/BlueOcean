@@ -99,6 +99,7 @@ cp target/server.war $APP_DIR/server.war
 mkdir -p $APP_DIR/ROOT
 cp dist/* $APP_DIR/ROOT/
 /usr/local/tomcat/bin/startup.sh'''
+        input(message: 'Waiting For QA Confirmation', id: 'QATEST', ok: 'Wow Works', submitter: 'Nagesh')
       }
     }
 
