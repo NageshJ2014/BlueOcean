@@ -17,6 +17,7 @@ echo "Building Server"
 mvn -version
 
 mkdir -p target
+chmod -R 777 target
 touch "target/server.war"'''
             stash(name: 'server', includes: '**/*.war')
           }
