@@ -7,6 +7,7 @@ pipeline {
           agent {
             docker {
               image 'maven:3.6-jdk-8-slim'
+              args '-u 0:0'
             }
 
           }
