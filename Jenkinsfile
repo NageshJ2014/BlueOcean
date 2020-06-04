@@ -25,6 +25,7 @@ touch "target/server.war"'''
           agent {
             docker {
               image 'node:13'
+              args '-u 0:0'
             }
 
           }
