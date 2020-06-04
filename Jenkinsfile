@@ -39,6 +39,7 @@ cat > dist/index.html <<EOF
 <h1> HELLO Works Like Charm </h1>
 EOF
 touch "dist/client.js"'''
+            stash(name: 'client', includes: '**/dist/*')
           }
         }
 
@@ -47,15 +48,30 @@ touch "dist/client.js"'''
 
     stage('Testing') {
       parallel {
-        stage('ServerTest') {
+        stage('Chrome') {
+          agent {
+            docker {
+              image 'selenium/standalone-chrome'
+            }
+
+          }
           steps {
-            sh 'echo "Hello World"'
+            sh '''echo "Hello From Chrome Testing Stage"
+echo \'mvn test -Dbrowser=chrome\''''
           }
         }
 
-        stage('ClientTest') {
+        stage('Firefox') {
+          agent {
+            docker {
+              image 'selenium/standalone-firefox'
+            }
+
+          }
           steps {
             sh 'echo "This is Server Testing"'
+            sh '''echo "Hello From Firefox Stage"
+echo \'mvn test -Dbrowser=firefox\''''
           }
         }
 
