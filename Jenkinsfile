@@ -32,8 +32,10 @@ touch "target/server.war"'''
           }
           steps {
             sh '''echo "Building the Client Code"
+
 npm install --save react
 mkdir -p dist
+chmod -R 777 dist
 cat > dist/index.html <<EOF
 <HTML>
 <Title> THIS IS TESTING BLUEOCEAN PAGE </TITLE>
