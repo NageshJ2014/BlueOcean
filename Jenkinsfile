@@ -15,6 +15,7 @@ mvn -version
 
 mkdir -p target
 touch "target/server.war"'''
+        stash(name: 'server', includes: '**/*.war')
       }
     }
 
