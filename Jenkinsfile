@@ -93,7 +93,8 @@ echo \'mvn test -Dbrowser=firefox\''''
       steps {
         unstash 'server'
         unstash 'client'
-        sh '''APP_DIR=/usr/local/tomcat/webapps
+        sh '''echo "This is Going to Run in Tomcat Container"
+APP_DIR=/usr/local/tomcat/webapps
 rm -rf $APP_DIR/ROOT
 cp target/server.war $APP_DIR/server.war
 mkdir -p $APP_DIR/ROOT
